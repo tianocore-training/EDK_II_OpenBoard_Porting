@@ -3,7 +3,7 @@
 <br><br><br>
 <br><br>
 ## <span class="gold"   >UEFI & EDK II Training</span>
-<span style="font-size:0.85em" >EDK II Open Board Platform Design for Intel Architecture(IA)
+<span style="font-size:0.85em" >EDK II Open Board Platform Porting 
 
 
 <br>

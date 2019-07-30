@@ -1411,8 +1411,8 @@ These activities, contained within SEC and PEI phases, do not map 1:1 to the req
 
 
 ---?image=assets/images/slides/Slide25.JPG
-@title[Location of Stage 1 Modules]
-<p align="right"><span class="gold" >@size[1.1em](<b> Location of Stage 1 Modules</b>)</span><span style="font-size:0.75em;" ></span></p>
+@title[Process of Porting]
+<p align="right"><span class="gold" >@size[1.1em](<b>Process of Porting</b>)</span><span style="font-size:0.75em;" ></span></p>
 
 @snap[south span-85 fragment]
 @box[bg-purple-pp text-white rounded my-box-pad2  ](<p style="line-height:40%"><span style="font-size:0.8em">Check the Board/Platform .FDF file layout<br><br>&nbsp;</span></p>)
@@ -1421,12 +1421,51 @@ These activities, contained within SEC and PEI phases, do not map 1:1 to the req
 
 Note:
 
+Process of Porting - need to find the platform code to port so - 
+
 Where’s the platform code start? or the first point where the platform code is executed
 
 
 As the foundational stage for further functionality, Stage I may include additional content beyond what is strictly required to meet the stage objective. Typically this will include silicon initialization code that may be packaged in a variety of mechanisms including varying size binary blobs. 
 
 The Stage I modules will be combined into FVs to make up the Stage I components
+
+
+
+---?image=assets/images/slides/Slide26_1.JPG
+@title[Investigate the FDF then DSC files]
+<p align="right"><span class="gold" >@size[1.1em](<b> Investigate the FDF  then DSC Files</b>)</span><span style="font-size:0.75em;" ></span></p>
+
+@snap[north-west span-66 ]
+<br>
+<br>
+<p style="line-height:80%" align="left" ><span style="font-size:0.85em; ">
+<b>Porting process per stage: find and update platform hooks</b>
+</span></p>
+
+<ul style="list-style-type:none; line-height:0.8;">
+  <li class="fragment"><span style="font-size:0.7em" >@color[yellow](&#10102;)&nbsp;Locate FVs for each stage</span> </li>
+  <li class="fragment"><span style="font-size:0.7em" >@color[yellow](&#10103;)&nbsp;Modules for each FV contents</span> </li>
+  <li class="fragment"><span style="font-size:0.7em" >@color[yellow](&#10104;)&nbsp;Module Locations</span> </li>
+  <li class="fragment"><span style="font-size:0.7em" >@color[yellow](&#10105;)&nbsp;Platform Porting Libraries per Module</span> </li>
+  <li class="fragment"><span style="font-size:0.7em" >@color[yellow](&#10106;)&nbsp;Update the Hook Function for Board</span> </li>
+</ul>
+
+@snapend
+
+
+Note:
+The process for porting each stage will be to investigate the FDF and the DSC files to locate FVs, Modules and Libraries associated with each stage.
+Once the library hook is found, update that platform hook function for the board being ported.
+
+### Porting Process per Stage Find: 
+1. Locate FVs for each stage in the FDF file
+2. find Modules for each FV contents in the FDF
+3. Find Module Locations in the platform DSC file - Should point to an inf file that is probably in the Common i.e. MinplatformPkg or edk2 modules
+4. Find Platform Porting Libraries per Module in th DSC - library could be in minPlatform with hook into the platform specific code.
+5. Update the Hook Function for Board,  should be in a .c file coorsponding to the library
+
+
 
 ---
 @title[Stage 1 Firmware Volumes]
